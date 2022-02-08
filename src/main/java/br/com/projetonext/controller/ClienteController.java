@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.projetonext.bean.Cliente;
 import br.com.projetonext.bo.ClienteBO;
+import br.com.projetonext.dto.ClienteDTO;
 import br.com.projetonext.repository.ClienteRepository;
 
 @Controller
@@ -22,7 +23,9 @@ public class ClienteController {
 	private ClienteRepository clienteRepo;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getIndex() {
+	public String getIndex(Model model) {
+		ClienteDTO cliDTO = new ClienteDTO();
+		model.addAttribute("clienteDTO", cliDTO);
 		return "index";
 	}
 	
@@ -54,9 +57,13 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(String cpf, String senha) {
-		Optional<Cliente> cli = clienteRepo.findByCpfAndSenha(cpf, senha);
+	public String login(ClienteDTO clienteDTO) {
+		Cliente cli = clienteRepo.findByCpfAndSenha(clienteDTO.getCpf(), clienteDTO.getSenha());
 		
-		return "index";
-	}
+		if(cli == null) {
+			return "redirect:/?logininvalido";
+		}
+
+		return "home";
+	}	
 }

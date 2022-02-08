@@ -13,10 +13,10 @@
 </head>
 <body>
 	<div class="wrapper">
-    	<form class="form-signin">       
+    	<form class="form-signin" th:action="@{/login}" method="POST" th:object="${clienteDTO}">       
     		<h2 class="form-signin-heading">Login</h2>
-			<input type="text" class="form-control" name="username" placeholder="CPF" required="" autofocus="" />
-    		<input type="password" class="form-control" name="password" placeholder="Senha" required=""/>      
+			<input type="text" class="form-control" name="cpf" placeholder="CPF" required="" autofocus="" th:field="*{cpf}">
+    		<input type="password" class="form-control" name="senha" placeholder="Senha" required="" th:field="*{senha}">      
     		<label class="checkbox">
         	<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Lembrar usuário
     		</label>

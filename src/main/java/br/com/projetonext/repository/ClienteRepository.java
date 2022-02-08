@@ -12,8 +12,8 @@ import br.com.projetonext.bean.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
-	//Cliente findByIdCliente(Integer idCliente);
+	Cliente findByIdCliente(Integer idCliente);
 	
-	@Query("Select c from Cliente c where c.cpf = ?1 and c.password = ?2")
-	Optional<Cliente> findByCpfAndSenha(@Param("cpf") String cpf, @Param("password") String password);
+	@Query("Select c from Cliente c where c.cpf = ?1 and c.senha = ?2")
+	Cliente findByCpfAndSenha(@Param("cpf") String cpf, @Param("senha") String senha);
 }
