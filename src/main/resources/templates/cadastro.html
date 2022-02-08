@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login :: Teste</title>
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../static/css/estilo.css" th:href="@{/css/estilo.css}">
+</head>
+<body>
+	<div class="container">
+		<div class="conteudo">
+			<h1>Cadastro</h1>
+			<hr>
+			<h2>Preencha o formulário</h2>
+			<form th:action="@{/cadastrar}" method="POST" th:object="${cliente}">
+				<input type="text" placeholder="Nome" class="form-control mb-4 col-4" th:field="*{nome}">
+				<input type="text" placeholder="CPF" class="form-control mb-4 col-4" th:field="*{cpf}">
+				<input type="date" placeholder="Data de nascimento" class="form-control mb-4 col-4" th:field="*{dataString}">
+	      		<input type="password" placeholder="Senha" class="form-control mb-4 col-4" th:field="*{senha}">
+	
+				<button type="submit" class="btn btn-info col-2">Cadastrar</button>
+			</form>
+			<hr>
+		</div>
+	</div>
+	<div class="container my-2">
+		<h1>Lista de Pessoas</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Telefone</th>
+					<th>E-mail</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pessoa : ${listaPessoas}">
+					<td th:text="${pessoa.nome}"></td>
+					<td th:text="${pessoa.user}"></td>
+					<td th:text="${pessoa.senha}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html> 
