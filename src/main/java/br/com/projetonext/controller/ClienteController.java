@@ -3,12 +3,13 @@ package br.com.projetonext.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,21 +19,22 @@ import br.com.projetonext.dto.ClienteDTO;
 import br.com.projetonext.repository.ClienteRepository;
 
 @Controller
+@RequestMapping("/")
 public class ClienteController {
 	
 	@Autowired
 	private ClienteRepository clienteRepo;
 	
 	private ClienteDTO cliDTO;
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+
+	@GetMapping	
 	public String getIndex(Model model) {
 		ClienteDTO cliDTO = new ClienteDTO();
 		model.addAttribute("clienteDTO", cliDTO);
 		return "index";
 	}
 	
-	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	@GetMapping("cadastro")
 	public String getCadastro(Model model) {
 		Cliente cliente = new Cliente();
 		model.addAttribute("cliente", cliente);
@@ -40,7 +42,7 @@ public class ClienteController {
 		return "cadastro";
 	}
 	
-	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
+	@PostMapping("cadastrar")
 	public String insertCliente(Cliente cliente) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -59,8 +61,8 @@ public class ClienteController {
 		return new ClienteBO(this.clienteRepo);
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(ClienteDTO clienteDTO) {
+	@PostMapping("login")
+	public String login(ClienteDTO clienteDTO, ModelMap model) {
 		Cliente cli = clienteRepo.findByCpfAndSenha(clienteDTO.getCpf(), clienteDTO.getSenha());
 		
 		if(cli == null) {
@@ -70,16 +72,25 @@ public class ClienteController {
 		clienteDTO.setNome(cli.getNome());
 		cliDTO = clienteDTO;
 		
-		return "home";
+		return "redirect:/home";
 	}
 	
-	@RequestMapping(value = "/extrato", method = RequestMethod.GET)
+	@GetMapping("extrato")
 	public String getExtrato() {
 		return "extrato";
 	}
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String getHome() {
+	@GetMapping("home")
+	public String getHome(ModelMap model) {
+		Cliente cliente = clienteRepo.findByNome(cliDTO.getNome());
+		model.addAttribute("clientes", cliente.getNome());
 		return "home";
 	}
+			
+	public Cliente buscaNome() {
+		Cliente cliente = clienteRepo.findByNome(cliDTO.getNome());
+		
+		return cliente;
+	}
+	
 }

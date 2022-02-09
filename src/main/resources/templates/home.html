@@ -11,6 +11,7 @@
 
 <body>
     <header>
+       
         <div class="left">
             <img src="img/download-removebg-preview.png" alt="" class="logo">
         </div>
@@ -30,7 +31,8 @@
             <li class="login">
                 <a href="#">
                     <img class="foto" src="img/semfoto.jpg" alt="">
-                    <h2 class="name"></h2>
+					<h2 class="name" th:text="${clientes}"></h2>
+					
                 </a>
             </li>
             <li class="login">
