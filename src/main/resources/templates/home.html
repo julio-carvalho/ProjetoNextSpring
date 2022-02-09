@@ -1,10 +1,298 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Next</title>
 </head>
+
 <body>
-<h1>Home</h1>
+    <header>
+        <div class="left">
+            <img src="img/download-removebg-preview.png" alt="" class="logo">
+        </div>
+        <div class="center">
+            <h1 class="name" href="#">NEXT</h1>
+        </div>
+        <div class="barra">
+
+        </div>
+        <div class="right">
+            <span class="icon"><box-icon type='solid' name='adjust-alt'></box-icon></span>
+            <span class="icon"><box-icon name='dots-vertical'></box-icon></span>
+        </div>
+    </header>
+    <div class="navigation">
+        <ul>
+            <li class="login">
+                <a href="#">
+                    <img class="foto" src="img/semfoto.jpg" alt="">
+                    <h2 class="name"></h2>
+                </a>
+            </li>
+            <li class="login">
+                <a href="#">
+                    <h6 class="name">237-Next Ag: 3858 C/C:473681-8</h6>
+                </a>
+            </li>
+            <li class="login">
+                <a href="#">
+                    <h6 class="saldo">R$
+                        <h2>200.000,00</h2>
+
+                    </h6>
+                    <span class="icon"><box-icon name='low-vision' color='rgb(206, 200, 200)'></box-icon></span>
+
+                </a>
+            </li>
+            <li class="list active">
+                <a href="/home">
+                    <span class="icon"><box-icon name='home' type='solid' color='#00ff5f' ></box-icon></span>
+                    <span class="titulo">Ínicio</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/extrato">
+                    <span class="icon"><box-icon type='solid' name='file-txt' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Extrato</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='transfer' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Transferências</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='dollar' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Pagamentos</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='credit-card' type='solid' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Cartões</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='pinterest-alt' type='logo' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Pix</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='bank' type='solid' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Crédito</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='line-chart' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Investimentos</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><box-icon name='crown' type='solid' color='#00ff5f'></box-icon></span>
+                    <span class="titulo">Mimos</span>
+                </a>
+            </li>
+        </ul>
+        <i class="icon" id="power-off"><box-icon name='power-off' color='#00ff5f' size='md'></box-icon></i>
+    </div>
+    <div class="principal">
+        <div class="conteudo">
+            <div id="column-1" class="col-1">
+                <h1>Hoje, 22 de Dez<span class="icon"><box-icon name='chevron-down' color='#00ff5f'></box-icon></span></h1>
+                <h4><u>Transações Agendadas</u></h4>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tipo de transação</td>
+                            <td>22/12</td>
+                            <td>R$ 10.000,00</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de transação</td>
+                            <td>22/12</td>
+                            <td>R$ 2.000,00</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de transação</td>
+                            <td>22/12</td>
+                            <td>R$ 6.000,00</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de transação</td>
+                            <td>22/12</td>
+                            <td>R$ 63.000,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="column-4" class="col-1">
+                <h1>Cartão de crédito</h1>
+                <h4>Fatura Atual</h4>
+                <h1 class="saldo">R$ 1.034,00</h1>
+                <img src="img/cartaoNext.png" alt="" class="cartao">
+                <div id="grafico" class="col-1">
+                    <canvas id="pizza" width="542" height="542"></canvas>
+                </div>
+            </div>
+
+
+            <div id="column-2" class="col-1">
+                <canvas id="myChart" width="80px" height="40px"></canvas>
+            </div>
+            <div id="column-3" class="col-1">
+                <div id="transfer" class="col-col3">
+                    <h2>Transferências</h2>
+                    <h6></h6>
+                </div>
+                <div class="col-col3">
+                    <h2>PIX <span class="icon"><box-icon name='chevron-down' color='#00ff5f'></box-icon></span></h2>
+
+                </div>
+                <div id="col-col3-2" class="col-col3">
+                    <h2>ENVIAR <span class="icon"><box-icon name='chevron-down' color='#00ff5f'></box-icon></span></h2>
+
+                </div>
+                <div id="col-col3-3" class="col-col3">
+                    <img src="img/png-transparent-qr-code-barcode-scanners-data-matrix-others-text-rectangle-monochrome-removebg-preview.png" alt="" class="image">
+                </div>
+                <div id="col-col3-4" class="col-col3">
+                    <h6>Valor da tranferência</h6>
+                    <input type="text" placeholder="R$0,00">
+                    <a href="#" class="icon">
+                        <box-icon type='solid' name='right-arrow-square' color='#00ff5f' size='md'></box-icon>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active')
+        }
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+    </script>
+
+    <script>
+        const labels = [
+            'Jan',
+            'Fev',
+            'Mar',
+            'Abr',
+            'Mai',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Set',
+            'Out',
+            'Nov',
+            'Dez'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Entradas',
+                backgroundColor: ['#FD6699'],
+                borderColor: 'transparent',
+                borderWidth: 1,
+                barPercentage: 0.5,
+                barThickness: 6,
+                maxBarThickness: 8,
+                minBarLength: 20,
+                data: [0, 2000, 4000, 6000, 1300, 4300, 5400],
+            }, {
+                label: 'Saídas',
+                backgroundColor: ['#00ff5f'],
+                borderColor: 'transparent',
+                borderWidth: 1,
+                barPercentage: 0.5,
+                barThickness: 6,
+                maxBarThickness: 8,
+                minBarLength: 20,
+                data: [0, 588, 4180, 7500, 1800, 3300, 6200],
+            }]
+
+
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+    </script>
+    <script>
+        const dataum = {
+
+            labels: [
+                'Gasto',
+                'Disponível'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [2300, 3400],
+                backgroundColor: [
+                    '#FD6699',
+                    '#00ff5f',
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const myConfig = {
+            type: 'doughnut',
+            data: dataum,
+            options: {
+
+            }
+        };
+    </script>
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+
+        );
+        const myChart2 = new Chart(
+            document.getElementById('pizza'),
+            myConfig
+
+
+        );
+    </script>
+
+
 </body>
+
 </html>

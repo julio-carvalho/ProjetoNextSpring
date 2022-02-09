@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.projetonext.bean.Cliente;
+import br.com.projetonext.dto.ClienteDTO;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
@@ -16,4 +17,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
 	@Query("Select c from Cliente c where c.cpf = ?1 and c.senha = ?2")
 	Cliente findByCpfAndSenha(@Param("cpf") String cpf, @Param("senha") String senha);
+	
+	@Query("Select c from Cliente c where c.nome = ?1")
+	Cliente findByNome(@Param("nome") String nome);
 }
